@@ -81,6 +81,11 @@ const resolveDotIndex = function resolveDotIndex(o, p, v) {
 const resolveClass = function resolveJobFromName(_job, _name) {
   _job = _job || ''
 
+  // Hack for Blue Mage
+  if (isYou(_name) && _job === '') {
+    return ['blu', _name, '']
+  }
+
   let o = /^(.+?) \((.+?)\)$/.exec(_name)
   if(!o) {
     if(_name === 'Limit Break' || _name === '리미트 브레이크') {
